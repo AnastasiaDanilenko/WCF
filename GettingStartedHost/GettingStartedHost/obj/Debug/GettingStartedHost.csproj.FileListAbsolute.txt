@@ -6,3 +6,6 @@ E:\Laboratory_Works\DotNet\WCF\GettingStartedHost\GettingStartedHost\bin\Debug\G
 E:\Laboratory_Works\DotNet\WCF\GettingStartedHost\GettingStartedHost\obj\Debug\GettingStartedHost.exe
 E:\Laboratory_Works\DotNet\WCF\GettingStartedHost\GettingStartedHost\obj\Debug\GettingStartedHost.pdb
 E:\Laboratory_Works\DotNet\WCF\GettingStartedHost\GettingStartedHost\obj\Debug\GettingStartedHost.csprojResolveAssemblyReference.cache
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedHost\GettingStartedHost\bin\Debug\GettingStartedHost.exe.config
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedHost\GettingStartedHost\obj\Debug\GettingStartedHost.exe
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedHost\GettingStartedHost\obj\Debug\GettingStartedHost.pdb

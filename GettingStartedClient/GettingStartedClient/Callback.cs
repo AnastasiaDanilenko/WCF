@@ -32,7 +32,7 @@ namespace GettingStartedClient
         {
 
             mainform.users.Add(clients);
-            string message = "\n К чату присоединился новый пользователь: " + clients;
+            string message = "\nК чату присоединился новый пользователь: " + clients;
             if (text.InvokeRequired)
             {
                 text.BeginInvoke(new NewMS(NewMessage), message);
@@ -54,7 +54,7 @@ namespace GettingStartedClient
         public void NewRoomOpened(string room)
         {
             mainform.rooms.Add(room);
-            string message = "\n Открылась новая комната: " + room;
+            string message = "\nОткрылась новая комната: " + room;
             if (text.InvokeRequired)
             {
                 text.BeginInvoke(new NewMS(NewMessage), message);
@@ -80,7 +80,7 @@ namespace GettingStartedClient
                 text.BeginInvoke(new NewMS(NewPrivateMessage), message);
             }
             else
-                text.AppendText("\n Принято приватное сообщение от пользователя " + message);
+                text.AppendText("\nПринято приватное сообщение от пользователя " + message);
         }
     }
 }

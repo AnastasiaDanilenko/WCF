@@ -83,7 +83,7 @@ namespace GettingStartedClient
         {
             listener.NewUserArrived(textBox_name.Text);
             textBox_message.Text = textBox_name.Text + ": ";
-            showmessage("Вы подключились к чату. Ваш логин: " + textBox_name.Text);
+            showmessage("\nВы подключились к чату. Ваш логин: " + textBox_name.Text);
             textBox_name.Enabled = false;
             button_addnewuser.Enabled = false;
         }
@@ -113,8 +113,8 @@ namespace GettingStartedClient
             listener.GotUserToDeleteEvent += new GotUserToDeleteDelegate(listener.Delete);
             listener.GotRoomDeleteEvent += new GotRoomDeleteDelegate(listener.Quit_Room);
             richTextBox_text.AppendText("Чтобы начать общение в чате, заполните форму регистрации." +
-                "\nПодключитесь к существующей комнате или создайте новую." +
-                "\nДля приватного общения выберите имя активного пользователя из списка и нажмите на кнопку Послать сообщение выбранному пользователю");
+                "\n\nПодключитесь к существующей комнате или создайте новую." +
+                "\n\nДля приватного общения выберите имя активного пользователя из списка и нажмите на кнопку Послать сообщение выбранному пользователю");
         }
 
         private void comboBox_rooms_DropDown(object sender, EventArgs e)
