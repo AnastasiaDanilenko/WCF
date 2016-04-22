@@ -1,0 +1,21 @@
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.exe.config
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.exe
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.pdb
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedLib.dll
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedLib.pdb
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.ClienChatCallbackHandler.resources
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.Properties.Resources.resources
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.csproj.GenerateResource.Cache
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.exe
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.pdb
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.exe.config
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.exe
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.pdb
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.exe
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedClient.pdb
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedLib.dll
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\bin\Debug\GettingStartedLib.pdb
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.Properties.Resources.resources
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.csproj.GenerateResource.Cache
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.csprojResolveAssemblyReference.cache
+E:\Laboratory_Works\DotNet\WCF\GettingStartedClient\GettingStartedClient\obj\Debug\GettingStartedClient.Form1.resources

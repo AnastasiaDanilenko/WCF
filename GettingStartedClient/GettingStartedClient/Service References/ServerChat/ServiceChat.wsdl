@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceChat" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="ChatService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <cdp:CompositeDuplex xmlns:cdp="http://schemas.microsoft.com/net/2006/06/duplex" />
+        <ow:OneWay xmlns:ow="http://schemas.microsoft.com/ws/2005/05/routing/policy" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:30000/ServiceChat?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://127.0.0.1:30000/ServiceChat?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:30000/ServiceChat?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceChat_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_SendPrivateMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendPrivateMessage" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_SendPrivateMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendPrivateMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_CreateNewRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewRoom" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_CreateNewRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_RemoveClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClient" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_RemoveClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_AddToSomeRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddToSomeRoom" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_AddToSomeRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddToSomeRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_QuitRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:QuitRoom" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_QuitRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QuitRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_SendMessageToRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageToRoom" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_SendMessageToRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageToRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_CreateNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_CreateNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_NewUserArrived_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NewUserArrived" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_NewRoomOpened_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NewRoomOpened" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_ConnectedToRoom_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ConnectedToRoom" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_NewMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NewMessage" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_NewPrivateMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NewPrivateMessage" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_Update_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_RoomRemoved_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RoomRemoved" />
+  </wsdl:message>
+  <wsdl:message name="IServiceChat_RoomRemoved_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RoomRemovedResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="IServiceChat">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/GetData" message="tns:IServiceChat_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/GetDataResponse" message="tns:IServiceChat_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendPrivateMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendPrivateMessage" message="tns:IServiceChat_SendPrivateMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/SendPrivateMessageResponse" message="tns:IServiceChat_SendPrivateMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateNewRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/CreateNewRoom" message="tns:IServiceChat_CreateNewRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/CreateNewRoomResponse" message="tns:IServiceChat_CreateNewRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RemoveClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/RemoveClient" message="tns:IServiceChat_RemoveClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/RemoveClientResponse" message="tns:IServiceChat_RemoveClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddToSomeRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/AddToSomeRoom" message="tns:IServiceChat_AddToSomeRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/AddToSomeRoomResponse" message="tns:IServiceChat_AddToSomeRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QuitRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/QuitRoom" message="tns:IServiceChat_QuitRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/QuitRoomResponse" message="tns:IServiceChat_QuitRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessageToRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/SendMessageToRoom" message="tns:IServiceChat_SendMessageToRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/SendMessageToRoomResponse" message="tns:IServiceChat_SendMessageToRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/CreateNewUser" message="tns:IServiceChat_CreateNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/CreateNewUserResponse" message="tns:IServiceChat_CreateNewUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewUserArrived">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewUserArrived" message="tns:IServiceChat_NewUserArrived_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewRoomOpened">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewRoomOpened" message="tns:IServiceChat_NewRoomOpened_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ConnectedToRoom">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/ConnectedToRoom" message="tns:IServiceChat_ConnectedToRoom_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewMessage" message="tns:IServiceChat_NewMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewPrivateMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewPrivateMessage" message="tns:IServiceChat_NewPrivateMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Update">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/Update" message="tns:IServiceChat_Update_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RoomRemoved">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/RoomRemoved" message="tns:IServiceChat_RoomRemoved_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceChat/RoomRemovedResponse" message="tns:IServiceChat_RoomRemoved_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ChatService" type="tns:IServiceChat">
+    <wsp:PolicyReference URI="#ChatService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/GetData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPrivateMessage">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/SendPrivateMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewRoom">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/CreateNewRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClient">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/RemoveClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSomeRoom">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/AddToSomeRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuitRoom">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/QuitRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToRoom">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/SendMessageToRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/CreateNewUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewUserArrived">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/NewUserArrived" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewRoomOpened">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/NewRoomOpened" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectedToRoom">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/ConnectedToRoom" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewMessage">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/NewMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewPrivateMessage">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/NewPrivateMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/Update" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoomRemoved">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/RoomRemoved" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceChat">
+    <wsdl:port name="ChatService" binding="tns:ChatService">
+      <soap12:address location="http://127.0.0.1:30000/ServiceChat" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://127.0.0.1:30000/ServiceChat</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

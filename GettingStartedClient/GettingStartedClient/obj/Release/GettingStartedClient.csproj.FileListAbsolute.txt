@@ -1,0 +1,8 @@
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Release\GettingStartedClient.exe.config
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Release\GettingStartedClient.exe
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\bin\Release\GettingStartedClient.pdb
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Release\GettingStartedClient.ClienChatCallbackHandler.resources
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Release\GettingStartedClient.Properties.Resources.resources
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Release\GettingStartedClient.csproj.GenerateResource.Cache
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Release\GettingStartedClient.exe
+C:\Users\Анастасия\Documents\Visual Studio 2015\Projects\GettingStartedClient\GettingStartedClient\obj\Release\GettingStartedClient.pdb
