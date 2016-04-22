@@ -48,6 +48,11 @@ namespace GettingStartedClient
                 GotUserToDeleteEvent(name);
         }
 
+        public void Delete(string name)
+        {
+            client.RemoveClient(name);
+        }
+
         public void NewRoom(string name)
         {
             if (GotRoomAddEvent != null)

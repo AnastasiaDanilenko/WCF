@@ -110,7 +110,7 @@ namespace GettingStartedClient
             listener.GotUserToAddEvent += new GotUserToAddDelegate(listener.AddNewUser);
             listener.GotRoomAddEvent += new GotRoomAddDelegate(listener.AddNewRoom);
             listener.GotRoomEnterEvent += new GotRoomEnterDelegate(listener.EnterRoom);
-            listener.GotUserToDeleteEvent += new GotUserToDeleteDelegate(listener.DeleteUser);
+            listener.GotUserToDeleteEvent += new GotUserToDeleteDelegate(listener.Delete);
             listener.GotRoomDeleteEvent += new GotRoomDeleteDelegate(listener.Quit_Room);
             richTextBox_text.AppendText("Чтобы начать общение в чате, заполните форму регистрации." +
                 "\nПодключитесь к существующей комнате или создайте новую." +
