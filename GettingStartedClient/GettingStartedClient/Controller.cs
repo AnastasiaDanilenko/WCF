@@ -74,7 +74,7 @@ namespace GettingStartedClient
         private void RemoveClient(string name)
         {
             client.RemoveClient(name);
-            var Message = MessageBox.Show("Вы отключились от чата");
+            var Message = MessageBox.Show("Вы отключились от чата. Больше вы не будете получть сообщения.");
         }
 
         public void Send_Private(string message, string user)
