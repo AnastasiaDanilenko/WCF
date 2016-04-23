@@ -16,8 +16,9 @@ namespace GettingStartedLib
 
         [OperationContract(IsOneWay = true)]
         void NewRoomOpened(string room);
+
         [OperationContract(IsOneWay = true)]
-        void ConnectedToRoom(string room);
+        void UserRemoved(string room);
 
         [OperationContract(IsOneWay = true)]
         void NewMessage(string message);
@@ -79,20 +80,11 @@ namespace GettingStartedLib
     public class Room
     {
 
-
-        List<User> users = new List<User>();
-        string name = "";
         [DataMember]
         public List<User> Users
-        {
-            get { return users; }
-            set { users = value; }
-        }
+        {get; set;}
         [DataMember]
         public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        {get; set; }
     }
 }

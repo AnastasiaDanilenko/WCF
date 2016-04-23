@@ -60,6 +60,7 @@ namespace GettingStartedLib
                 }
             }
             Callback.RoomRemoved(room);
+           
         }
 
         public string CreateNewRoom(string name)
@@ -90,7 +91,7 @@ namespace GettingStartedLib
 
                 }
             }
-            Callback.ConnectedToRoom(room);
+            
         }
 
         public void RemoveClient(string name)
@@ -106,7 +107,7 @@ namespace GettingStartedLib
             }
             users.Remove(name);
             Console.WriteLine("Users in chat: " + connected_users.Count().ToString());
-            UpdateUsers();
+            Callback.UserRemoved(name);
         }
 
        public void SendMessageToRoom(string room, string message)

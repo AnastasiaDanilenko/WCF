@@ -17,18 +17,17 @@ namespace GettingStartedClient
     {
         public delegate void NewMS(string mes);
         Listener listener = new Listener();
+        ClienChatCallbackHandler callback = new ClienChatCallbackHandler();
         public string current_room = "";
-        public string message = "";
+        public string message1 = "";
         public List<string> users = new List<string>();
         public List<string> rooms = new List<string>();
         public List<string> messages = new List<string>();
-        public static RichTextBox text { get; private set; }
         
         public Form1()
         {
             InitializeComponent();
-            text = this.richTextBox_text;
-            listener.StartClient(this);
+            listener.StartClient(callback);
         }
         public void showmessage(string message)
         {
@@ -37,7 +36,7 @@ namespace GettingStartedClient
 
         private void button_send_Click(object sender, EventArgs e)
         {
-            string message = textBox_message.Text;
+            string message = "\n" + textBox_message.Text;
             listener.NewMessage(current_room, message);
         }
         private void button_sendtouser_Click(object sender, EventArgs e)
@@ -59,25 +58,12 @@ namespace GettingStartedClient
         {
             listener.NewRoom(textBox_roomname.Text);
         }
-        private void RenewRooms()
+        private void Renew(List<string> new_users, List<string> new_rooms) 
         {
-            comboBox_rooms.Items.Clear();
-            foreach (string s in rooms)
-                if (!comboBox_rooms.Items.Contains(s))
-                {
-                    comboBox_rooms.Items.Add(s);
-                }
+            users = new_users.ToList();
+            rooms = new_rooms.ToList();           
         }
 
-        private void RenewClients()
-        {
-            comboBox_users.Items.Clear();
-            foreach (string s in users)
-                if (!comboBox_users.Items.Contains(s))
-                {
-                    comboBox_users.Items.Add(s);
-                }
-        }
 
         private void button_addnewuser_Click(object sender, EventArgs e)
         {
@@ -98,12 +84,83 @@ namespace GettingStartedClient
 
         private void comboBox_users_DropDown(object sender, EventArgs e)
         {
+            foreach (string s in users)
+                if (!comboBox_users.Items.Contains(s))
+                {
+                    comboBox_users.Items.Add(s);
+                }
+        }
 
-            RenewClients();
+        private void GotMessMeth(string message)
+        {
+            if (richTextBox_text.InvokeRequired)
+            {
+                richTextBox_text.BeginInvoke(new NewMS(GotMessMeth), message);
+            }
+            else
+                richTextBox_text.AppendText("\n" + message);
+        }
+
+        private void GotPrivateMeth(string message)
+        {
+            if (richTextBox_text.InvokeRequired)
+            {
+                richTextBox_text.BeginInvoke(new NewMS(GotPrivateMeth), message);
+            }
+            else
+                richTextBox_text.AppendText("\nПринято приватное сообщение от пользователя " + message);
+        }
+
+        public void Add_room(string room)
+        {
+            rooms.Add(room);
+            if (richTextBox_text.InvokeRequired)
+            {
+                richTextBox_text.BeginInvoke(new NewMS(Add_room), room);
+            }
+            else
+            {
+                string message = "\nОткрылась новая комната: " + room;
+                richTextBox_text.AppendText("\n" + message);
+            }
+        }
+
+        private void New_user(string clients)
+        {
+            users.Add(clients);
+            if (richTextBox_text.InvokeRequired)
+            {
+                richTextBox_text.BeginInvoke(new NewMS(New_user), clients);
+            }
+            else
+            {
+                string message = "\nК чату присоединился новый пользователь: " + clients;
+                richTextBox_text.AppendText("\n" + message);
+            }
+        }
+
+        private void Room_deleted(string name)
+        {
+            if (comboBox_rooms.InvokeRequired)
+            {
+                comboBox_rooms.BeginInvoke(new NewMS(Room_deleted), name);
+            }
+            else
+                comboBox_rooms.Items.Remove(name);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //callback.GotMess -= GotMessMeth;
+
+            callback.GotMess += GotMessMeth;
+            callback.GotPrivate += GotPrivateMeth;
+            callback.GotUpd += Renew;
+            callback.GotRoomOpened += Add_room;
+            callback.GotUserArrived += new GotUserArrivedDelegate(New_user);
+            callback.GotUserDelete += new GotUserDeleteDelegate(Room_deleted);
+            callback.GotRDelete += new GotRDeleteDelegate(Room_deleted);
+
             panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             listener.GotMessageEvent += new GotMessageDelegate(listener.send);
             listener.GotPrivateMessageEvent += new GotPrivateMessageDelegate(listener.Send_Private);
@@ -119,7 +176,11 @@ namespace GettingStartedClient
 
         private void comboBox_rooms_DropDown(object sender, EventArgs e)
         {
-            RenewRooms();
+            foreach (string s in rooms)
+                if (!comboBox_rooms.Items.Contains(s))
+                {
+                    comboBox_rooms.Items.Add(s);
+                }
         }
 
         
@@ -127,7 +188,7 @@ namespace GettingStartedClient
         private void button_quitroom_Click(object sender, EventArgs e)
         {
             listener.Quit_Room(current_room, textBox_name.Text);
-            showmessage("Вы покинули комнату " + current_room + ". Вы больше не будете получать сообщения от этой комнаты.");
+            showmessage("\nВы покинули комнату " + current_room + ". Вы больше не будете получать сообщения от этой комнаты.");
         }
     }
 }

@@ -105,10 +105,10 @@ namespace GettingStartedClient
             client.QuitRoom(room, user);
         }
 
-        public void StartClient(Form1 form1)
+        public void StartClient(ClienChatCallbackHandler c)
         {
-            ClienChatCallbackHandler callback = new ClienChatCallbackHandler(form1);
-            InstanceContext instanseContext = new InstanceContext(callback);
+        
+            InstanceContext instanseContext = new InstanceContext(c);
             client = new ServiceChatClient(instanseContext);
         }
 

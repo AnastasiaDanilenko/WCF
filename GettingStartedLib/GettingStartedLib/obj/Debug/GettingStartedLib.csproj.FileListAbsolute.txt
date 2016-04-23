@@ -4,3 +4,6 @@ E:\Laboratory_Works\DotNet\WCF\GettingStartedLib\GettingStartedLib\bin\Debug\Get
 E:\Laboratory_Works\DotNet\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.dll
 E:\Laboratory_Works\DotNet\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.pdb
 E:\Laboratory_Works\DotNet\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.csprojResolveAssemblyReference.cache
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.csprojResolveAssemblyReference.cache
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.dll
+C:\Users\Анастасия\Documents\GitHub\WCF\GettingStartedLib\GettingStartedLib\obj\Debug\GettingStartedLib.pdb
