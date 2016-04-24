@@ -73,8 +73,8 @@ namespace GettingStartedClient.ServerChat {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/NewRoomOpened")]
         void NewRoomOpened(string room);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/ConnectedToRoom")]
-        void ConnectedToRoom(string room);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/UserRemoved")]
+        void UserRemoved(string room);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceChat/NewMessage")]
         void NewMessage(string message);

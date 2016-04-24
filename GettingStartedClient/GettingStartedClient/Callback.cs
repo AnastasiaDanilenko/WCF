@@ -35,9 +35,10 @@ namespace GettingStartedClient
         public event GotUserDeleteDelegate GotUserDelete;
 
 
-        public void ConnectedToRoom(string room)
+        public void UserRemoved(string name)
         {
-
+            if (GotUserDelete != null)
+                GotUserDelete(name);
         }
         public void NewUserArrived(string clients)
         {

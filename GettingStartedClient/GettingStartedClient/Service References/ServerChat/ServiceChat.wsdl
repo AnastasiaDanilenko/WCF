@@ -74,8 +74,8 @@
   <wsdl:message name="IServiceChat_NewRoomOpened_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NewRoomOpened" />
   </wsdl:message>
-  <wsdl:message name="IServiceChat_ConnectedToRoom_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ConnectedToRoom" />
+  <wsdl:message name="IServiceChat_UserRemoved_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserRemoved" />
   </wsdl:message>
   <wsdl:message name="IServiceChat_NewMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NewMessage" />
@@ -131,8 +131,8 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewRoomOpened">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewRoomOpened" message="tns:IServiceChat_NewRoomOpened_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ConnectedToRoom">
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/ConnectedToRoom" message="tns:IServiceChat_ConnectedToRoom_OutputCallbackMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UserRemoved">
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/UserRemoved" message="tns:IServiceChat_UserRemoved_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceChat/NewMessage" message="tns:IServiceChat_NewMessage_OutputCallbackMessage" />
@@ -235,8 +235,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ConnectedToRoom">
-      <soap12:operation soapAction="http://tempuri.org/IServiceChat/ConnectedToRoom" style="document" />
+    <wsdl:operation name="UserRemoved">
+      <soap12:operation soapAction="http://tempuri.org/IServiceChat/UserRemoved" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

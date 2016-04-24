@@ -146,29 +146,42 @@ namespace GettingStartedClient
                 comboBox_rooms.BeginInvoke(new NewMS(Room_deleted), name);
             }
             else
+            {
                 comboBox_rooms.Items.Remove(name);
+                rooms.Remove(name);
+            }
+        }
+
+        private void User_deleted(string name)
+        {
+            if (comboBox_users.InvokeRequired)
+            {
+                comboBox_users.BeginInvoke(new NewMS(User_deleted), name);
+            }
+            else
+            {
+                comboBox_users.Items.Remove(name);
+                users.Remove(name);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //callback.GotMess -= GotMessMeth;
-
             callback.GotMess += GotMessMeth;
             callback.GotPrivate += GotPrivateMeth;
-            callback.GotUpd += Renew;
             callback.GotRoomOpened += Add_room;
-            callback.GotUserArrived += new GotUserArrivedDelegate(New_user);
-            callback.GotUserDelete += new GotUserDeleteDelegate(Room_deleted);
-            callback.GotRDelete += new GotRDeleteDelegate(Room_deleted);
+            callback.GotUserArrived += New_user;
+            callback.GotUserDelete += User_deleted;
+            callback.GotRDelete += Room_deleted;
+            listener.GotMessageEvent += listener.send;
+            listener.GotPrivateMessageEvent += listener.Send_Private;
+            listener.GotUserToAddEvent += listener.AddNewUser;
+            listener.GotRoomAddEvent += listener.AddNewRoom;
+            listener.GotRoomEnterEvent += listener.EnterRoom;
+            listener.GotUserToDeleteEvent += listener.Delete;
+            listener.GotRoomDeleteEvent += listener.Quit_Room;
 
-            panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            listener.GotMessageEvent += new GotMessageDelegate(listener.send);
-            listener.GotPrivateMessageEvent += new GotPrivateMessageDelegate(listener.Send_Private);
-            listener.GotUserToAddEvent += new GotUserToAddDelegate(listener.AddNewUser);
-            listener.GotRoomAddEvent += new GotRoomAddDelegate(listener.AddNewRoom);
-            listener.GotRoomEnterEvent += new GotRoomEnterDelegate(listener.EnterRoom);
-            listener.GotUserToDeleteEvent += new GotUserToDeleteDelegate(listener.Delete);
-            listener.GotRoomDeleteEvent += new GotRoomDeleteDelegate(listener.Quit_Room);
+            panel1.BorderStyle = BorderStyle.Fixed3D;
             richTextBox_text.AppendText("Чтобы начать общение в чате, заполните форму регистрации." +
                 "\n\nПодключитесь к существующей комнате или создайте новую." +
                 "\n\nДля приватного общения выберите имя активного пользователя из списка и нажмите на кнопку Послать сообщение выбранному пользователю");
@@ -189,6 +202,23 @@ namespace GettingStartedClient
         {
             listener.Quit_Room(current_room, textBox_name.Text);
             showmessage("\nВы покинули комнату " + current_room + ". Вы больше не будете получать сообщения от этой комнаты.");
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            callback.GotMess -= GotMessMeth;
+            callback.GotPrivate -= GotPrivateMeth;
+            callback.GotRoomOpened -= Add_room;
+            callback.GotUserArrived -= New_user;
+            callback.GotUserDelete -= User_deleted;
+            callback.GotRDelete -= Room_deleted;
+            listener.GotMessageEvent -= listener.send;
+            listener.GotPrivateMessageEvent -= listener.Send_Private;
+            listener.GotUserToAddEvent -= listener.AddNewUser;
+            listener.GotRoomAddEvent -= listener.AddNewRoom;
+            listener.GotRoomEnterEvent -= listener.EnterRoom;
+            listener.GotUserToDeleteEvent -= listener.Delete;
+            listener.GotRoomDeleteEvent -= listener.Quit_Room;
         }
     }
 }

@@ -74,7 +74,7 @@ namespace GettingStartedLib
             {
                 ics.NewRoomOpened(name);
             }
-            UpdateUsers();
+            //UpdateUsers();
             return name;
         }
        public  void AddToSomeRoom(string room, string user)
@@ -145,7 +145,7 @@ namespace GettingStartedLib
                 ics.NewUserArrived(user_name);
             }
             Console.WriteLine("Users in chat: " + connected_users.Count.ToString());
-            UpdateUsers();
+            //UpdateUsers();
             return user_name;
         }
 
